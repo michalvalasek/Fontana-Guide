@@ -1,0 +1,24 @@
+<?php include('header.phtml');?>
+
+<div data-role="page" id="bgf-itempage-<?=$item->hash?>">
+	<div data-role="header">
+		<h1>Fontana Guide</h1>
+	</div>
+	<div data-role="content">
+		<h2><?=$item->title?></h2>
+		<p><small><?=$item->type?></small></p>
+		<p><?=$item->description?></p>
+		<p><em><?=$item->info?></em></p>
+		<ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="b">
+			<li data-role="list-divider">Premietania</li>
+			<?foreach($item->dates as $d):?>
+			<li><?=$d?></li>
+			<?endforeach?>
+		</ul>
+	</div>
+	<div data-role="footer">
+		<h4>App by<br />BinaryGoo</h4>
+	</div>
+</div>
+
+<?php include('footer.phtml');?>

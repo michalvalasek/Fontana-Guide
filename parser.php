@@ -26,6 +26,7 @@ $dom->preserveWhiteSpace = FALSE;
 $table = $dom->getElementsByTagName('table')->item(7);
 
 $items = array();
+$unique_items = array();
 
 for($i=1; $i<=$table->childNodes->length; $i++) {
 	if ( $i%2 ) continue;
@@ -50,6 +51,9 @@ for($i=1; $i<=$table->childNodes->length; $i++) {
 			'info' => $tag->childNodes->item(4)->getElementsByTagName('b')->item(1)->nodeValue,
 			'dates' => $dates,
 		);
+		
+		$unique_items[md5($item_data['title'])] = new ProgramItem($item_data);
+		
 		foreach($dates as $d) {
 			$item = new ProgramItem($item_data);
 			$item->setTimestamp($d);
@@ -58,12 +62,14 @@ for($i=1; $i<=$table->childNodes->length; $i++) {
 	}
 }
 
-if ( file_put_contents(STORAGE_FILE,serialize($items)) ) {
+$res1 = file_put_contents(STORAGE_FILE,serialize($items));
+$res2 = file_put_contents(STORAGE_FILE_UNIQUES,serialize($unique_items));
+
+if ( $res1 && $res2 ) {
 	output_msg("DATA STORED SUCCESSFULLY");
 }
 else {
 	output_msg("ERROR STORING DATA");
 }
 
-//echo "<pre>DATA STORED.<br /><br />";
-var_dump($items);
+var_dump($unique_items);
