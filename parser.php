@@ -1,5 +1,9 @@
 <?php
 
+if ( !isset($_GET['token']) || $_GET['token']!=='ff161c5f724f8cd1c01b355da7e1a1ef' ) {
+	die('Invalid token.');
+}
+
 require_once('config.php');
 require_once('ProgramItem.php');
 

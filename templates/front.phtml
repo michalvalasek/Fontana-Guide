@@ -5,9 +5,10 @@
 		<h1>Fontana Guide</h1>
 	</div>
 	<div data-role="content">
-		<a href="add_email.php?" data-role="button" data-icon="star">Notifikácie e-mailom</a>
+		<a href="add_email.php" data-role="button" data-theme="e" data-icon="star">Notifikácie e-mailom</a>
 		<br />
 		<ul data-role="listview">
+			<li><h3>Aktuálne predstavenia</h3></li>
 		<?foreach($items as $i):?>
 			<?if( $curr_date=='' || date('Ymd',$i->timestamp)>$curr_date ):?>
 			<?$curr_date=date('Ymd',$i->timestamp);?>
