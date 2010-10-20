@@ -1,0 +1,23 @@
+<?php include('header.phtml');?>
+
+<div data-role="page" id="bgf-page-addemail">
+	<div data-role="header" data-nobackbtn="true">
+		<a href="index.php" data-icon="arrow-l" data-transition="fade">Back</a>
+		<h1>Fontana Guide</h1>
+	</div>
+	<div data-role="content">
+		<h2>Notifikácie e-mailom</h2>
+		<p>Po odoslaní svojej e-mailovej adresy budete do schránky dostávať notifikácie o aktuálnych predstaveniach.</strong></p>
+		<form action="add_email.php" method="post" id="form_addemail">
+		    <label for="email">Vaša e-mailová adresa:</label>
+		    <input type="text" name="email" id="email" value=""  />
+			<a href="#" data-role="button" data-theme="b" data-inline="true" onclick="$('#form_addemail').submit();return false;">Odoslať</a>
+		</form>
+	</div>
+	<div data-role="footer">
+		<h4>App by<br />BinaryGoo</h4>
+	</div>
+</div>
+
+
+<?php include('footer.phtml');?>

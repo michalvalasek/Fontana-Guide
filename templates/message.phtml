@@ -1,0 +1,21 @@
+<?php include('header.phtml');?>
+
+<div data-role="page" id="bgf-messagepage">
+	<div data-role="header">
+		<?if(! isset($tpl_data['button'])):?>
+		<a href="index.php" data-icon="arrow-l" data-transition="fade">Back</a>
+		<?endif?>
+		<h1>Fontana Guide</h1>
+	</div>
+	<div data-role="content">
+		<p><strong><?=$tpl_data['message']?></strong></p>
+		<?if(isset($tpl_data['button'])):?>
+		<?=$tpl_data['button']?>
+		<?endif?>
+	</div>
+	<div data-role="footer">
+		<h4>App by<br />BinaryGoo</h4>
+	</div>
+</div>
+
+<?php include('footer.phtml');?>

@@ -1,10 +1,12 @@
 <?php include('header.phtml');?>
 
 <div data-role="page" id="bgf-frontpage">
-	<div data-role="header">
+	<div data-role="header" data-nobackbtn="true">
 		<h1>Fontana Guide</h1>
 	</div>
 	<div data-role="content">
+		<a href="add_email.php?" data-role="button" data-icon="star">Notifikácie e-mailom</a>
+		<br />
 		<ul data-role="listview">
 		<?foreach($items as $i):?>
 			<?if( $curr_date=='' || date('Ymd',$i->timestamp)>$curr_date ):?>
