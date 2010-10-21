@@ -32,7 +32,7 @@ if ( count($comming_items)>0 ) {
     	$message .= $ci->title."\n";
     	$message .= $ci->type."\n";
     	$message .= $ci->description."\n";
-    	$message .= $ci->info."\n";
+    	$message .= $ci->info."\n\n";
 	}
 	
 	$res = FALSE;
@@ -51,7 +51,7 @@ if ( count($comming_items)>0 ) {
     	$res = $mail->send();
 	}
 	if ( $res == TRUE ) {
-		echo "Fontana Guide: Notification emails sent";
+		echo "Fontana Guide: ".count($comming_items)." notification emails sent.";
 	}
 	else {
 		echo "Fontana Guide: Notification emails NOT sent";
