@@ -24,7 +24,7 @@ if ( count($comming_items)>0 ) {
 	$storage_emails = file_get_contents(STORAGE_FILE_EMAILS);
 	$emails = unserialize($storage_emails);
 
-	$from = 'Fontana Guide <fontana@michalvalasek.net>';
+	$from = 'Fontana Guide <fontana@binarygoo.com>';
 	$subject = 'Dnešné predstavenia '.date('d.m.Y',time());
 	$message = "Dnes v kine Fontána uvádzajú nasledujúce predstavenia:\n\n";
 	foreach($comming_items as $ci) {
