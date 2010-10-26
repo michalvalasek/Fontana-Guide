@@ -1,1 +1,0 @@
-a:1:{i:0;s:24:"michal.valasek@gmail.com";}
