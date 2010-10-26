@@ -9,7 +9,7 @@ if ( !isset($_GET['token']) || $_GET['token']!=CRON_TOKEN ) {
 require_once('ZFmail.php');
 
 $today = date('Ymd');
-$comming_items = $DATABASE->query('SELECT events.* FROM dates LEFT JOIN events ON events.id=dates.event_id WHERE dates.date=%s',$today)->fetchAll();
+$comming_items = $DATABASE->query('SELECT events.*, dates.timestamp FROM dates LEFT JOIN events ON events.id=dates.event_id WHERE dates.date=%s',$today)->fetchAll();
 
 if ( count($comming_items)>0 ) {
     
