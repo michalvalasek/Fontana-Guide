@@ -1,10 +1,9 @@
 <?php
 
-require_once('config.php');
-require_once('ProgramItem.php');
+require_once('init.php');
 
-$storage = file_get_contents(STORAGE_FILE);
-$items = unserialize($storage);
+$dates = $DATABASE->query('SELECT * FROM [dates] ORDER BY [timestamp]')->fetchAll();
+$events = $DATABASE->query('SELECT * FROM [events]')->fetchAssoc('id');
 
 $curr_date = '';
 

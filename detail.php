@@ -4,21 +4,19 @@ if (!isset($_GET['id'])) {
 	die('Error: No ID provided.');
 }
 
-$id = $_GET['id'];
-if ( !preg_match('/^[0-9a-z]{32}$/',$id) ) {
+$event_id = $_GET['id'];
+//if ( !preg_match('/^[0-9a-z]{32}$/',$id) ) {
+if ( !preg_match('/^\d+$/',$event_id) ) {
 	die('Error: Incorrect ID provided.');
 }
 
-require_once('config.php');
-require_once('ProgramItem.php');
+require_once('init.php');
 
-$storage = file_get_contents(STORAGE_FILE_UNIQUES);
-$items = unserialize($storage);
-
-if ( !isset($items[$id]) ) {
+$event = $DATABASE->query('SELECT * FROM [events] WHERE [id]=%d',$event_id)->fetch();
+if ( count($event)==0 ) {
 	die('Error: ID doesn\'t exist.');
 }
 
-$item = $items[$id];
+$dates = $DATABASE->query('SELECT * FROM [dates] WHERE [event_id]=%d',$event_id,'ORDER BY [timestamp]')->fetchAll();
 
 include('templates/detail.phtml');

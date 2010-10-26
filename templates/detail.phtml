@@ -5,14 +5,14 @@
 		<h1>Fontana Guide</h1>
 	</div>
 	<div data-role="content">
-		<h2><?=$item->title?></h2>
-		<p><small><?=$item->type?></small></p>
-		<p><?=$item->description?></p>
-		<p><em><?=$item->info?></em></p>
+		<h2><?=$event->title?></h2>
+		<p><small><?=$event->type?></small></p>
+		<p><?=$event->description?></p>
+		<p><em><?=$event->info?></em></p>
 		<ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="b">
 			<li data-role="list-divider">Premietania</li>
-			<?foreach($item->dates as $d):?>
-			<li><?=$d?></li>
+			<?foreach($dates as $d):?>
+			<li><?=date('d.m.Y o H:i',$d->timestamp)?></li>
 			<?endforeach?>
 		</ul>
 	</div>

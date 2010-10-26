@@ -9,15 +9,15 @@
 		<br />
 		<ul data-role="listview">
 			<li><h3>Aktuálne predstavenia</h3></li>
-		<?foreach($items as $i):?>
-			<?if( $curr_date=='' || date('Ymd',$i->timestamp)>$curr_date ):?>
-			<?$curr_date=date('Ymd',$i->timestamp);?>
-			<li data-role="list-divider"><?=date('d.m.Y',$i->timestamp)?></li>
+		<?foreach($dates as $date):?>
+			<?if( $curr_date=='' || $date->date>$curr_date ):?>
+			<?$curr_date=$date->date;?>
+			<li data-role="list-divider"><?=date('d.m.Y',$date->timestamp)?></li>
 			<?endif?>
-			<li><a href="detail.php?id=<?=$i->hash?>">
-				<h5><?=date('H:i',$i->timestamp)?></h5>
-				<p><strong><?=$i->title?></strong></p>
-				<p><?=$i->type?></p>
+			<li><a href="detail.php?id=<?=$events[$date->event_id]->id?>">
+				<h5><?=date('H:i',$date->timestamp)?></h5>
+				<p><strong><?=$events[$date->event_id]->title?></strong></p>
+				<p><?=$events[$date->event_id]->type?></p>
 			</a></li>
 		<?endforeach?>
 		</ul>
