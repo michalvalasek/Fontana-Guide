@@ -25,6 +25,8 @@ if ( count($comming_items)>0 ) {
     	$message .= $ci->description."\n";
     	$message .= $ci->info."\n\n";
 	}
+	$message .= "\nFontana Guide\n";
+	$message .= "http://fontana.binarygoo.com";
 	
 	$res = FALSE;
 	if ( count($emails)>0 ) {
