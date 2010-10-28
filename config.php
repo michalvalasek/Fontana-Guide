@@ -2,6 +2,8 @@
 
 date_default_timezone_set('Europe/Berlin');
 
+//ini_set('display_errors','On');
+
 define('STORAGE_FILE','storage/storage.php');
 define('STORAGE_FILE_UNIQUES','storage/storage_uniques.php');
 define('STORAGE_FILE_EMAILS','storage/storage_emails.php');
