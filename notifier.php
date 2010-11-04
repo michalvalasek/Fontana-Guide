@@ -45,12 +45,16 @@ if ( count($comming_items)>0 ) {
 	}
 	
 	if ( $res == TRUE ) {
-		echo "Fontana Guide: ".count($emails)." notification emails sent.";
+		$report = "Fontana Guide: ".count($emails)." notification emails sent.";
 	}
 	else {
-		echo "Fontana Guide: Notification emails NOT sent";
+		$report = "Fontana Guide: Notification emails NOT sent";
 	}
 }
 else {
-	echo "Fontana Guide: No comming items today.";
+	$report = "Fontana Guide: No comming items today.";
 }
+
+// send report
+$mail = new ZFmail($to,'fontana@binarygoo.com','Notifier report '.date('d.m.Y'),$report);
+$mail->send();
