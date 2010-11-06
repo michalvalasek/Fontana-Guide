@@ -33,7 +33,7 @@ for($i=1; $i<=$table->childNodes->length; $i++)
 		$item_data['hash'] = md5($item_data['title'].$dates_raw);
 		
 		$event = $DATABASE->query('SELECT * FROM [events] WHERE [hash]=%s',$item_data['hash'])->fetch();
-		if ( count($event)==0 )
+		if ( $event===FALSE || count($event)==0 )
 		{
 			$DATABASE->query('INSERT INTO [events]',$item_data);
 			$last_id = $DATABASE->insertId();
@@ -53,7 +53,7 @@ for($i=1; $i<=$table->childNodes->length; $i++)
 	}
 }
 
-
+output_msg("Parsing finished.");
 
 
 // HELPER FUNCTIONS
