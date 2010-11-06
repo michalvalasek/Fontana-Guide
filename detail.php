@@ -5,7 +5,6 @@ if (!isset($_GET['id'])) {
 }
 
 $event_id = $_GET['id'];
-//if ( !preg_match('/^[0-9a-z]{32}$/',$id) ) {
 if ( !preg_match('/^\d+$/',$event_id) ) {
 	die('Error: Incorrect ID provided.');
 }

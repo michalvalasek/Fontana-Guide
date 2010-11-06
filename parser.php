@@ -29,21 +29,27 @@ for($i=1; $i<=$table->childNodes->length; $i++)
 			'type' => $tag->childNodes->item(4)->getElementsByTagName('td')->item(0)->nodeValue,
 			'info' => $tag->childNodes->item(4)->getElementsByTagName('b')->item(1)->nodeValue,
 		);
+		$dates_raw = $tag->childNodes->item(2)->nodeValue;
+		$item_data['hash'] = md5($item_data['title'].$dates_raw);
 		
-		$DATABASE->query('INSERT INTO [events]',$item_data);
-		$last_id = $DATABASE->insertId();
-		
-		$dates = explode('|',str_replace('hod','hod|',$tag->childNodes->item(2)->nodeValue));
-		array_pop($dates);
-		foreach($dates as $d) {
-			$timestamp = dateToTimestamp($d);
-			$date_data = array(
-				'event_id' => $last_id,
-				'date' => date('Ymd',$timestamp),
-				'timestamp' => $timestamp,
-			);
-			$DATABASE->query('INSERT INTO [dates]',$date_data);
-		}		
+		$event = $DATABASE->query('SELECT * FROM [events] WHERE [hash]=%s',$item_data['hash'])->fetch();
+		if ( count($event)==0 )
+		{
+			$DATABASE->query('INSERT INTO [events]',$item_data);
+			$last_id = $DATABASE->insertId();
+			
+			$dates = explode('|',str_replace('hod','hod|',$dates_raw));
+			array_pop($dates);
+			foreach($dates as $d) {
+				$timestamp = dateToTimestamp($d);
+				$date_data = array(
+					'event_id' => $last_id,
+					'date' => date('Ymd',$timestamp),
+					'timestamp' => $timestamp,
+				);
+				$DATABASE->query('INSERT INTO [dates]',$date_data);
+			}
+		}	
 	}
 }
 
