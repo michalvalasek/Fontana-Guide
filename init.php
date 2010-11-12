@@ -15,3 +15,13 @@ try {
 } catch (DibiException $e) {
 	echo get_class($e), ': ', $e->getMessage(), "\n";
 }
+
+$WEEKDAYS = array(
+	1 => 'Pondelok',
+	2 => 'Utorok',
+	3 => 'Streda',
+	4 => 'Štvrtok',
+	5 => 'Piatok',
+	6 => 'Sobota',
+	7 => 'Nedeľa',
+);

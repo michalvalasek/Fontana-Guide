@@ -12,7 +12,7 @@
 		<?foreach($dates as $date):?>
 			<?if( $curr_date=='' || $date->date>$curr_date ):?>
 			<?$curr_date=$date->date;?>
-			<li data-role="list-divider"><?=date('d.m.Y',$date->timestamp).' - '.$weekdays[date('N',$date->timestamp)]?></li>
+			<li data-role="list-divider"><?=date('d.m.Y',$date->timestamp).' - '.$WEEKDAYS[date('N',$date->timestamp)]?></li>
 			<?endif?>
 			<li><a href="detail.php?id=<?=$events[$date->event_id]->id?>">
 				<h5><?=date('H:i',$date->timestamp)?></h5>

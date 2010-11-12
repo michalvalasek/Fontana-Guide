@@ -12,7 +12,7 @@
 		<ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="b">
 			<li data-role="list-divider">Premietania</li>
 			<?foreach($dates as $d):?>
-			<li><?=date('d.m.Y o H:i',$d->timestamp)?></li>
+			<li><?=date('d.m.Y o H:i',$d->timestamp).' - '.$WEEKDAYS[date('N',$d->timestamp)]?></li>
 			<?endforeach?>
 		</ul>
 	</div>
