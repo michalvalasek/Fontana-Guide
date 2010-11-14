@@ -56,5 +56,5 @@ else {
 }
 
 // send report
-$mail = new ZFmail($to,'fontana@binarygoo.com','Notifier report '.date('d.m.Y'),$report);
+$mail = new ZFmail(EMAIL_NOTIFICATION_TO,'fontana@binarygoo.com','Notifier report '.date('d.m.Y'),$report);
 $mail->send();
